@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Internship.Models.document>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date_fichier_alf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fichier_alfresco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.format_fichier_alf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_fichier_alf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom_fichier_alf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.path_fichier_alf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.present)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.size_fichier_alf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.final_project_assignment.id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_fichier_alf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fichier_alfresco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.format_fichier_alf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_fichier_alf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom_fichier_alf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.path_fichier_alf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.present)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.size_fichier_alf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.final_project_assignment.id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

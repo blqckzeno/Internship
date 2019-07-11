@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="internshipModelStoreContainer" CdmEntityContainer="internshipEntities">
+    <EntitySetMapping Name="class">
+      <EntityTypeMapping TypeName="internshipModel.class">
+        <MappingFragment StoreEntitySet="class">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="university_id" ColumnName="university_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="convention">
+      <EntityTypeMapping TypeName="internshipModel.convention">
+        <MappingFragment StoreEntitySet="convention">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="updated" ColumnName="updated" />
+          <ScalarProperty Name="valid" ColumnName="valid" />
+          <ScalarProperty Name="university_id" ColumnName="university_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="department">
+      <EntityTypeMapping TypeName="internshipModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="chief_id" ColumnName="chief_id" />
+          <ScalarProperty Name="university_id" ColumnName="university_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="document">
+      <EntityTypeMapping TypeName="internshipModel.document">
+        <MappingFragment StoreEntitySet="document">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date_fichier_alf" ColumnName="date_fichier_alf" />
+          <ScalarProperty Name="fichier_alfresco" ColumnName="fichier_alfresco" />
+          <ScalarProperty Name="format_fichier_alf" ColumnName="format_fichier_alf" />
+          <ScalarProperty Name="id_fichier_alf" ColumnName="id_fichier_alf" />
+          <ScalarProperty Name="nom_fichier_alf" ColumnName="nom_fichier_alf" />
+          <ScalarProperty Name="path_fichier_alf" ColumnName="path_fichier_alf" />
+          <ScalarProperty Name="present" ColumnName="present" />
+          <ScalarProperty Name="size_fichier_alf" ColumnName="size_fichier_alf" />
+          <ScalarProperty Name="final_project_assignment_id" ColumnName="final_project_assignment_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enterprise">
+      <EntityTypeMapping TypeName="internshipModel.enterprise">
+        <MappingFragment StoreEntitySet="enterprise">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="address1" ColumnName="address1" />
+          <ScalarProperty Name="address2" ColumnName="address2" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+          <ScalarProperty Name="domain" ColumnName="domain" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="email_supervisor" ColumnName="email_supervisor" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="web_site" ColumnName="web_site" />
+          <ScalarProperty Name="representative_id" ColumnName="representative_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="final_project_assignment">
+      <EntityTypeMapping TypeName="internshipModel.final_project_assignment">
+        <MappingFragment StoreEntitySet="final_project_assignment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="convention_name" ColumnName="convention_name" />
+          <ScalarProperty Name="sheet_id" ColumnName="sheet_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="validation_group_id" ColumnName="validation_group_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grade">
+      <EntityTypeMapping TypeName="internshipModel.grade">
+        <MappingFragment StoreEntitySet="grade">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="maker_id" ColumnName="maker_id" />
+          <ScalarProperty Name="sheet_id" ColumnName="sheet_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notification">
+      <EntityTypeMapping TypeName="internshipModel.notification">
+        <MappingFragment StoreEntitySet="notification">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="sys_notif_date" ColumnName="sys_notif_date" />
+          <ScalarProperty Name="owner_id" ColumnName="owner_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="options">
+      <EntityTypeMapping TypeName="internshipModel.options">
+        <MappingFragment StoreEntitySet="options">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="updated" ColumnName="updated" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role">
+      <EntityTypeMapping TypeName="internshipModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sheet">
+      <EntityTypeMapping TypeName="internshipModel.sheet">
+        <MappingFragment StoreEntitySet="sheet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="categorie" ColumnName="categorie" />
+          <ScalarProperty Name="created" ColumnName="created" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="enterprise" ColumnName="enterprise" />
+          <ScalarProperty Name="problematique" ColumnName="problematique" />
+          <ScalarProperty Name="project_title" ColumnName="project_title" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="updated" ColumnName="updated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="university">
+      <EntityTypeMapping TypeName="internshipModel.university">
+        <MappingFragment StoreEntitySet="university">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="address1" ColumnName="address1" />
+          <ScalarProperty Name="address2" ColumnName="address2" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="registration_number" ColumnName="registration_number" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="web_site" ColumnName="web_site" />
+          <ScalarProperty Name="representative_id" ColumnName="representative_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="internshipModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="activated" ColumnName="activated" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="lang_key" ColumnName="lang_key" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="reset_key" ColumnName="reset_key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="validation_group">
+      <EntityTypeMapping TypeName="internshipModel.validation_group">
+        <MappingFragment StoreEntitySet="validation_group">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="valid_internship_director" ColumnName="valid_internship_director" />
+          <ScalarProperty Name="valid_pre_validator" ColumnName="valid_pre_validator" />
+          <ScalarProperty Name="valid_president" ColumnName="valid_president" />
+          <ScalarProperty Name="valid_reporter" ColumnName="valid_reporter" />
+          <ScalarProperty Name="valid_supervisor" ColumnName="valid_supervisor" />
+          <ScalarProperty Name="internship_director_id" ColumnName="internship_director_id" />
+          <ScalarProperty Name="pre_validator_id" ColumnName="pre_validator_id" />
+          <ScalarProperty Name="president_id" ColumnName="president_id" />
+          <ScalarProperty Name="reporter_id" ColumnName="reporter_id" />
+          <ScalarProperty Name="supervisor_id" ColumnName="supervisor_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="class_students" TypeName="internshipModel.class_students" StoreEntitySet="class_students">
+      <EndProperty Name="class">
+        <ScalarProperty Name="id" ColumnName="class_id" />
+      </EndProperty>
+      <EndProperty Name="users">
+        <ScalarProperty Name="id" ColumnName="students_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="user_role" TypeName="internshipModel.user_role" StoreEntitySet="user_role">
+      <EndProperty Name="role">
+        <ScalarProperty Name="id" ColumnName="roleid" />
+      </EndProperty>
+      <EndProperty Name="users">
+        <ScalarProperty Name="id" ColumnName="userid" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

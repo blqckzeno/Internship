@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Internship.Models.validation_group>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.valid_internship_director)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valid_pre_validator)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valid_president)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valid_reporter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valid_supervisor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.users.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.users1.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.users2.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.users3.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.users4.email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.valid_internship_director)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valid_pre_validator)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valid_president)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valid_reporter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valid_supervisor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.users.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.users1.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.users2.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.users3.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.users4.email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,98 @@
+﻿@model Internship.Models.validation_group
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>validation_group</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_internship_director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_internship_director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_pre_validator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_pre_validator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_president)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_president)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_reporter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_reporter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_supervisor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_supervisor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users1.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users1.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users2.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users2.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users3.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users3.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users4.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users4.email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

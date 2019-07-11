@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="48aef7d76fe4411aa77a1c27a673aa20" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="internshipModel.convention" Width="1.5" PointX="7.5" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.department" Width="1.5" PointX="7.5" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.document" Width="1.5" PointX="12" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.eclass" Width="1.5" PointX="7.5" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.enterprise" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.final_project_assignment" Width="1.5" PointX="9.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.grade" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.notification" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.options" Width="1.5" PointX="9.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.role" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.sheet" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.university" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.users" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.validation_group" Width="1.5" PointX="5.25" PointY="32.375" IsExpanded="true" />
+        <AssociationConnector Association="internshipModel.FKh8qeui2uegxspmt7p02wxboe5" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKpstlcgfat2y6jgcksv5tmxknn" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKh2ap9lv99txektaou64wpx8b2" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKrp6rnku7qccll4ya2wg2x9rvw" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKt6rk5mawjxopraei71e4cs2v5" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FK2hhq5u1h4wfm4u3bj061kcpwd" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKkgqhrf7yrhlp7tjtjtib8nfdb" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKcfr4xftsx6tk9c8f542yti6a2" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FK4vqmdu5ow4ird0gkwwo57lcie" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKgw1enp8l447c2ubeua711s19a" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKlf5qmfq74idjjtme0muhe6fmq" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKlgg742djk2axv0obw83p4qy89" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKprh543ojiisyrixk2ux1b0dyg" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FK9vcyt49k18m4eyt8c08j7hnl2" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKk6djikn2qjki5slvcf8apa2l5" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FK20deodjvx0vjtwipu1ah1k5p" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FK5a978kgynj1c8ctsmijfi5mgk" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FK77b1vomsrpc0j0oku26hy9vsr" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKgt7e5w3duycr51oibx5oqwwrj" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.FKkt87io0mf60axiv0uu7a11wik" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.eclass_students" ManuallyRouted="false" />
+        <AssociationConnector Association="internshipModel.user_role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

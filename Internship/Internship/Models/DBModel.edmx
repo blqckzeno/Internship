@@ -1,0 +1,1434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="internshipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="convention">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created" Type="datetime2" Precision="7" />
+          <Property Name="end_date" Type="datetime2" Precision="7" />
+          <Property Name="start_date" Type="datetime2" Precision="7" />
+          <Property Name="updated" Type="datetime2" Precision="7" />
+          <Property Name="valid" Type="bit" Nullable="false" />
+          <Property Name="university_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="chief_id" Type="bigint" />
+          <Property Name="university_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="document">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_fichier_alf" Type="datetime2" Precision="7" />
+          <Property Name="fichier_alfresco" Type="varbinary" MaxLength="255" />
+          <Property Name="format_fichier_alf" Type="varchar" MaxLength="255" />
+          <Property Name="id_fichier_alf" Type="varchar" MaxLength="255" />
+          <Property Name="nom_fichier_alf" Type="varchar" MaxLength="255" />
+          <Property Name="path_fichier_alf" Type="varchar" MaxLength="255" />
+          <Property Name="present" Type="bit" />
+          <Property Name="size_fichier_alf" Type="bigint" />
+          <Property Name="final_project_assignment_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="eclass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="year" Type="varchar" MaxLength="255" />
+          <Property Name="university_id" Type="bigint" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'internship.dbo.eclass_students' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="eclass_students">
+          <Key>
+            <PropertyRef Name="class_id" />
+            <PropertyRef Name="students_id" />
+          </Key>
+          <Property Name="class_id" Type="bigint" Nullable="false" />
+          <Property Name="students_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="enterprise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address1" Type="varchar" MaxLength="255" />
+          <Property Name="address2" Type="varchar" MaxLength="255" />
+          <Property Name="city" Type="varchar" MaxLength="255" />
+          <Property Name="state" Type="varchar" MaxLength="255" />
+          <Property Name="street" Type="varchar" MaxLength="255" />
+          <Property Name="zip_code" Type="bigint" Nullable="false" />
+          <Property Name="domain" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="email_supervisor" Type="varchar" MaxLength="255" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="web_site" Type="varchar" MaxLength="255" />
+          <Property Name="representative_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="final_project_assignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="convention_name" Type="bigint" Nullable="false" />
+          <Property Name="sheet_id" Type="bigint" Nullable="false" />
+          <Property Name="student_id" Type="bigint" Nullable="false" />
+          <Property Name="validation_group_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="grade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="level" Type="varchar" MaxLength="255" />
+          <Property Name="note" Type="varchar" MaxLength="255" />
+          <Property Name="number" Type="float" Nullable="false" />
+          <Property Name="maker_id" Type="bigint" Nullable="false" />
+          <Property Name="sheet_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="notification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="message" Type="varchar" MaxLength="255" />
+          <Property Name="mobile" Type="varchar" MaxLength="255" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="state" Type="int" />
+          <Property Name="sys_notif_date" Type="datetime2" Precision="7" />
+          <Property Name="owner_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="options">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created" Type="datetime2" Precision="7" />
+          <Property Name="label" Type="varchar" MaxLength="255" />
+          <Property Name="updated" Type="datetime2" Precision="7" />
+          <Property Name="department_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sheet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categorie" Type="varchar" MaxLength="255" />
+          <Property Name="created" Type="datetime2" Precision="7" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="enterprise" Type="varbinary" MaxLength="255" />
+          <Property Name="problematique" Type="varchar" MaxLength="255" />
+          <Property Name="project_title" Type="varchar" MaxLength="255" />
+          <Property Name="student_name" Type="varchar" MaxLength="255" />
+          <Property Name="updated" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="university">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="address1" Type="varchar" MaxLength="255" />
+          <Property Name="address2" Type="varchar" MaxLength="255" />
+          <Property Name="city" Type="varchar" MaxLength="255" />
+          <Property Name="state" Type="varchar" MaxLength="255" />
+          <Property Name="street" Type="varchar" MaxLength="255" />
+          <Property Name="zip_code" Type="bigint" Nullable="false" />
+          <Property Name="fax" Type="varchar" MaxLength="255" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="registration_number" Type="varchar" MaxLength="255" />
+          <Property Name="tel" Type="varchar" MaxLength="255" />
+          <Property Name="web_site" Type="varchar" MaxLength="255" />
+          <Property Name="representative_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'internship.dbo.user_role' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="user_role">
+          <Key>
+            <PropertyRef Name="userid" />
+            <PropertyRef Name="roleid" />
+          </Key>
+          <Property Name="userid" Type="bigint" Nullable="false" />
+          <Property Name="roleid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="activated" Type="bit" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="first_name" Type="varchar" MaxLength="255" />
+          <Property Name="lang_key" Type="varchar" MaxLength="255" />
+          <Property Name="last_name" Type="varchar" MaxLength="255" />
+          <Property Name="login" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="reset_key" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="validation_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="valid_internship_director" Type="bit" Nullable="false" />
+          <Property Name="valid_pre_validator" Type="bit" Nullable="false" />
+          <Property Name="valid_president" Type="bit" Nullable="false" />
+          <Property Name="valid_reporter" Type="bit" Nullable="false" />
+          <Property Name="valid_supervisor" Type="bit" Nullable="false" />
+          <Property Name="internship_director_id" Type="bigint" />
+          <Property Name="pre_validator_id" Type="bigint" />
+          <Property Name="president_id" Type="bigint" />
+          <Property Name="reporter_id" Type="bigint" />
+          <Property Name="supervisor_id" Type="bigint" />
+        </EntityType>
+        <Association Name="FK20deodjvx0vjtwipu1ah1k5p">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="president_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2ddw41wqqiilmi5oj69nwxbaa">
+          <End Role="eclass" Type="Self.eclass" Multiplicity="1" />
+          <End Role="eclass_students" Type="Self.eclass_students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="eclass">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eclass_students">
+              <PropertyRef Name="class_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2hhq5u1h4wfm4u3bj061kcpwd">
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="0..1" />
+          <End Role="document" Type="Self.document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="final_project_assignment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="document">
+              <PropertyRef Name="final_project_assignment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK4vqmdu5ow4ird0gkwwo57lcie">
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="0..1" />
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="validation_group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="final_project_assignment">
+              <PropertyRef Name="validation_group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK5a978kgynj1c8ctsmijfi5mgk">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="reporter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK77b1vomsrpc0j0oku26hy9vsr">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="internship_director_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK9vcyt49k18m4eyt8c08j7hnl2">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="notification" Type="Self.notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notification">
+              <PropertyRef Name="owner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKbo5ik0bthje7hum554xb17ry6">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="user_role" Type="Self.user_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_role">
+              <PropertyRef Name="roleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKcfr4xftsx6tk9c8f542yti6a2">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="enterprise" Type="Self.enterprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="enterprise">
+              <PropertyRef Name="representative_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKd47duvgyqi6groqu8tkw3tt79">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="eclass_students" Type="Self.eclass_students" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eclass_students">
+              <PropertyRef Name="students_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKgt7e5w3duycr51oibx5oqwwrj">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="pre_validator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKgw1enp8l447c2ubeua711s19a">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="final_project_assignment">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKh2ap9lv99txektaou64wpx8b2">
+          <End Role="university" Type="Self.university" Multiplicity="0..1" />
+          <End Role="department" Type="Self.department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="university">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="department">
+              <PropertyRef Name="university_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKh8qeui2uegxspmt7p02wxboe5">
+          <End Role="convention" Type="Self.convention" Multiplicity="1" />
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="convention">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="final_project_assignment">
+              <PropertyRef Name="convention_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKk6djikn2qjki5slvcf8apa2l5">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="university" Type="Self.university" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="university">
+              <PropertyRef Name="representative_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKkgqhrf7yrhlp7tjtjtib8nfdb">
+          <End Role="university" Type="Self.university" Multiplicity="0..1" />
+          <End Role="eclass" Type="Self.eclass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="university">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eclass">
+              <PropertyRef Name="university_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKkt87io0mf60axiv0uu7a11wik">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="supervisor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKl4qqtaxj0v5ikodha3v2pmfl">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="user_role" Type="Self.user_role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_role">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKlf5qmfq74idjjtme0muhe6fmq">
+          <End Role="sheet" Type="Self.sheet" Multiplicity="1" />
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sheet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="final_project_assignment">
+              <PropertyRef Name="sheet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKlgg742djk2axv0obw83p4qy89">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="grade" Type="Self.grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grade">
+              <PropertyRef Name="maker_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKprh543ojiisyrixk2ux1b0dyg">
+          <End Role="sheet" Type="Self.sheet" Multiplicity="1" />
+          <End Role="grade" Type="Self.grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sheet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grade">
+              <PropertyRef Name="sheet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpstlcgfat2y6jgcksv5tmxknn">
+          <End Role="university" Type="Self.university" Multiplicity="0..1" />
+          <End Role="convention" Type="Self.convention" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="university">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="convention">
+              <PropertyRef Name="university_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKrp6rnku7qccll4ya2wg2x9rvw">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="department" Type="Self.department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="department">
+              <PropertyRef Name="chief_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKt6rk5mawjxopraei71e4cs2v5">
+          <End Role="department" Type="Self.department" Multiplicity="0..1" />
+          <End Role="options" Type="Self.options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="options">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="internshipModelStoreContainer">
+          <EntitySet Name="convention" EntityType="Self.convention" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="department" EntityType="Self.department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="document" EntityType="Self.document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eclass" EntityType="Self.eclass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="enterprise" EntityType="Self.enterprise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="final_project_assignment" EntityType="Self.final_project_assignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="grade" EntityType="Self.grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notification" EntityType="Self.notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="options" EntityType="Self.options" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sheet" EntityType="Self.sheet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="university" EntityType="Self.university" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="validation_group" EntityType="Self.validation_group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eclass_students" EntityType="Self.eclass_students" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [eclass_students].[class_id] AS [class_id], 
+    [eclass_students].[students_id] AS [students_id]
+    FROM [dbo].[eclass_students] AS [eclass_students]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="user_role" EntityType="Self.user_role" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [user_role].[userid] AS [userid], 
+    [user_role].[roleid] AS [roleid]
+    FROM [dbo].[user_role] AS [user_role]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK20deodjvx0vjtwipu1ah1k5p" Association="Self.FK20deodjvx0vjtwipu1ah1k5p">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK2ddw41wqqiilmi5oj69nwxbaa" Association="Self.FK2ddw41wqqiilmi5oj69nwxbaa">
+            <End Role="eclass" EntitySet="eclass" />
+            <End Role="eclass_students" EntitySet="eclass_students" />
+          </AssociationSet>
+          <AssociationSet Name="FK2hhq5u1h4wfm4u3bj061kcpwd" Association="Self.FK2hhq5u1h4wfm4u3bj061kcpwd">
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+            <End Role="document" EntitySet="document" />
+          </AssociationSet>
+          <AssociationSet Name="FK4vqmdu5ow4ird0gkwwo57lcie" Association="Self.FK4vqmdu5ow4ird0gkwwo57lcie">
+            <End Role="validation_group" EntitySet="validation_group" />
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FK5a978kgynj1c8ctsmijfi5mgk" Association="Self.FK5a978kgynj1c8ctsmijfi5mgk">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK77b1vomsrpc0j0oku26hy9vsr" Association="Self.FK77b1vomsrpc0j0oku26hy9vsr">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK9vcyt49k18m4eyt8c08j7hnl2" Association="Self.FK9vcyt49k18m4eyt8c08j7hnl2">
+            <End Role="users" EntitySet="users" />
+            <End Role="notification" EntitySet="notification" />
+          </AssociationSet>
+          <AssociationSet Name="FKbo5ik0bthje7hum554xb17ry6" Association="Self.FKbo5ik0bthje7hum554xb17ry6">
+            <End Role="role" EntitySet="role" />
+            <End Role="user_role" EntitySet="user_role" />
+          </AssociationSet>
+          <AssociationSet Name="FKcfr4xftsx6tk9c8f542yti6a2" Association="Self.FKcfr4xftsx6tk9c8f542yti6a2">
+            <End Role="users" EntitySet="users" />
+            <End Role="enterprise" EntitySet="enterprise" />
+          </AssociationSet>
+          <AssociationSet Name="FKd47duvgyqi6groqu8tkw3tt79" Association="Self.FKd47duvgyqi6groqu8tkw3tt79">
+            <End Role="users" EntitySet="users" />
+            <End Role="eclass_students" EntitySet="eclass_students" />
+          </AssociationSet>
+          <AssociationSet Name="FKgt7e5w3duycr51oibx5oqwwrj" Association="Self.FKgt7e5w3duycr51oibx5oqwwrj">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FKgw1enp8l447c2ubeua711s19a" Association="Self.FKgw1enp8l447c2ubeua711s19a">
+            <End Role="users" EntitySet="users" />
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FKh2ap9lv99txektaou64wpx8b2" Association="Self.FKh2ap9lv99txektaou64wpx8b2">
+            <End Role="university" EntitySet="university" />
+            <End Role="department" EntitySet="department" />
+          </AssociationSet>
+          <AssociationSet Name="FKh8qeui2uegxspmt7p02wxboe5" Association="Self.FKh8qeui2uegxspmt7p02wxboe5">
+            <End Role="convention" EntitySet="convention" />
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FKk6djikn2qjki5slvcf8apa2l5" Association="Self.FKk6djikn2qjki5slvcf8apa2l5">
+            <End Role="users" EntitySet="users" />
+            <End Role="university" EntitySet="university" />
+          </AssociationSet>
+          <AssociationSet Name="FKkgqhrf7yrhlp7tjtjtib8nfdb" Association="Self.FKkgqhrf7yrhlp7tjtjtib8nfdb">
+            <End Role="university" EntitySet="university" />
+            <End Role="eclass" EntitySet="eclass" />
+          </AssociationSet>
+          <AssociationSet Name="FKkt87io0mf60axiv0uu7a11wik" Association="Self.FKkt87io0mf60axiv0uu7a11wik">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FKl4qqtaxj0v5ikodha3v2pmfl" Association="Self.FKl4qqtaxj0v5ikodha3v2pmfl">
+            <End Role="users" EntitySet="users" />
+            <End Role="user_role" EntitySet="user_role" />
+          </AssociationSet>
+          <AssociationSet Name="FKlf5qmfq74idjjtme0muhe6fmq" Association="Self.FKlf5qmfq74idjjtme0muhe6fmq">
+            <End Role="sheet" EntitySet="sheet" />
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FKlgg742djk2axv0obw83p4qy89" Association="Self.FKlgg742djk2axv0obw83p4qy89">
+            <End Role="users" EntitySet="users" />
+            <End Role="grade" EntitySet="grade" />
+          </AssociationSet>
+          <AssociationSet Name="FKprh543ojiisyrixk2ux1b0dyg" Association="Self.FKprh543ojiisyrixk2ux1b0dyg">
+            <End Role="sheet" EntitySet="sheet" />
+            <End Role="grade" EntitySet="grade" />
+          </AssociationSet>
+          <AssociationSet Name="FKpstlcgfat2y6jgcksv5tmxknn" Association="Self.FKpstlcgfat2y6jgcksv5tmxknn">
+            <End Role="university" EntitySet="university" />
+            <End Role="convention" EntitySet="convention" />
+          </AssociationSet>
+          <AssociationSet Name="FKrp6rnku7qccll4ya2wg2x9rvw" Association="Self.FKrp6rnku7qccll4ya2wg2x9rvw">
+            <End Role="users" EntitySet="users" />
+            <End Role="department" EntitySet="department" />
+          </AssociationSet>
+          <AssociationSet Name="FKt6rk5mawjxopraei71e4cs2v5" Association="Self.FKt6rk5mawjxopraei71e4cs2v5">
+            <End Role="department" EntitySet="department" />
+            <End Role="options" EntitySet="options" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="internshipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="convention">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created" Type="DateTime" Precision="7" />
+          <Property Name="end_date" Type="DateTime" Precision="7" />
+          <Property Name="start_date" Type="DateTime" Precision="7" />
+          <Property Name="updated" Type="DateTime" Precision="7" />
+          <Property Name="valid" Type="Boolean" Nullable="false" />
+          <Property Name="university_id" Type="Int64" />
+          <NavigationProperty Name="final_project_assignment" Relationship="Self.FKh8qeui2uegxspmt7p02wxboe5" FromRole="convention" ToRole="final_project_assignment" />
+          <NavigationProperty Name="university" Relationship="Self.FKpstlcgfat2y6jgcksv5tmxknn" FromRole="convention" ToRole="university" />
+        </EntityType>
+        <EntityType Name="department">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="chief_id" Type="Int64" />
+          <Property Name="university_id" Type="Int64" />
+          <NavigationProperty Name="university" Relationship="Self.FKh2ap9lv99txektaou64wpx8b2" FromRole="department" ToRole="university" />
+          <NavigationProperty Name="users" Relationship="Self.FKrp6rnku7qccll4ya2wg2x9rvw" FromRole="department" ToRole="users" />
+          <NavigationProperty Name="options" Relationship="Self.FKt6rk5mawjxopraei71e4cs2v5" FromRole="department" ToRole="options" />
+        </EntityType>
+        <EntityType Name="document">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_fichier_alf" Type="DateTime" Precision="7" />
+          <Property Name="fichier_alfresco" Type="Binary" MaxLength="255" FixedLength="false" />
+          <Property Name="format_fichier_alf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="id_fichier_alf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nom_fichier_alf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="path_fichier_alf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="present" Type="Boolean" />
+          <Property Name="size_fichier_alf" Type="Int64" />
+          <Property Name="final_project_assignment_id" Type="Int64" />
+          <NavigationProperty Name="final_project_assignment" Relationship="Self.FK2hhq5u1h4wfm4u3bj061kcpwd" FromRole="document" ToRole="final_project_assignment" />
+        </EntityType>
+        <EntityType Name="eclass">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="year" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="university_id" Type="Int64" />
+          <NavigationProperty Name="university" Relationship="Self.FKkgqhrf7yrhlp7tjtjtib8nfdb" FromRole="eclass" ToRole="university" />
+          <NavigationProperty Name="users" Relationship="Self.eclass_students" FromRole="eclass" ToRole="users" />
+        </EntityType>
+        <EntityType Name="enterprise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="street" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="zip_code" Type="Int64" Nullable="false" />
+          <Property Name="domain" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email_supervisor" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="web_site" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="representative_id" Type="Int64" />
+          <NavigationProperty Name="users" Relationship="Self.FKcfr4xftsx6tk9c8f542yti6a2" FromRole="enterprise" ToRole="users" />
+        </EntityType>
+        <EntityType Name="final_project_assignment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="convention_name" Type="Int64" Nullable="false" />
+          <Property Name="sheet_id" Type="Int64" Nullable="false" />
+          <Property Name="student_id" Type="Int64" Nullable="false" />
+          <Property Name="validation_group_id" Type="Int64" />
+          <NavigationProperty Name="convention" Relationship="Self.FKh8qeui2uegxspmt7p02wxboe5" FromRole="final_project_assignment" ToRole="convention" />
+          <NavigationProperty Name="document" Relationship="Self.FK2hhq5u1h4wfm4u3bj061kcpwd" FromRole="final_project_assignment" ToRole="document" />
+          <NavigationProperty Name="validation_group" Relationship="Self.FK4vqmdu5ow4ird0gkwwo57lcie" FromRole="final_project_assignment" ToRole="validation_group" />
+          <NavigationProperty Name="users" Relationship="Self.FKgw1enp8l447c2ubeua711s19a" FromRole="final_project_assignment" ToRole="users" />
+          <NavigationProperty Name="sheet" Relationship="Self.FKlf5qmfq74idjjtme0muhe6fmq" FromRole="final_project_assignment" ToRole="sheet" />
+        </EntityType>
+        <EntityType Name="grade">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="level" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="number" Type="Double" Nullable="false" />
+          <Property Name="maker_id" Type="Int64" Nullable="false" />
+          <Property Name="sheet_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.FKlgg742djk2axv0obw83p4qy89" FromRole="grade" ToRole="users" />
+          <NavigationProperty Name="sheet" Relationship="Self.FKprh543ojiisyrixk2ux1b0dyg" FromRole="grade" ToRole="sheet" />
+        </EntityType>
+        <EntityType Name="notification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="message" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="Int32" />
+          <Property Name="sys_notif_date" Type="DateTime" Precision="7" />
+          <Property Name="owner_id" Type="Int64" />
+          <NavigationProperty Name="users" Relationship="Self.FK9vcyt49k18m4eyt8c08j7hnl2" FromRole="notification" ToRole="users" />
+        </EntityType>
+        <EntityType Name="options">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created" Type="DateTime" Precision="7" />
+          <Property Name="label" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="updated" Type="DateTime" Precision="7" />
+          <Property Name="department_id" Type="Int64" />
+          <NavigationProperty Name="department" Relationship="Self.FKt6rk5mawjxopraei71e4cs2v5" FromRole="options" ToRole="department" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.user_role" FromRole="role" ToRole="users" />
+        </EntityType>
+        <EntityType Name="sheet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categorie" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created" Type="DateTime" Precision="7" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="enterprise" Type="Binary" MaxLength="255" FixedLength="false" />
+          <Property Name="problematique" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="project_title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="student_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="updated" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="final_project_assignment" Relationship="Self.FKlf5qmfq74idjjtme0muhe6fmq" FromRole="sheet" ToRole="final_project_assignment" />
+          <NavigationProperty Name="grade" Relationship="Self.FKprh543ojiisyrixk2ux1b0dyg" FromRole="sheet" ToRole="grade" />
+        </EntityType>
+        <EntityType Name="university">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="street" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="zip_code" Type="Int64" Nullable="false" />
+          <Property Name="fax" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="registration_number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="web_site" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="representative_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="convention" Relationship="Self.FKpstlcgfat2y6jgcksv5tmxknn" FromRole="university" ToRole="convention" />
+          <NavigationProperty Name="department" Relationship="Self.FKh2ap9lv99txektaou64wpx8b2" FromRole="university" ToRole="department" />
+          <NavigationProperty Name="eclass" Relationship="Self.FKkgqhrf7yrhlp7tjtjtib8nfdb" FromRole="university" ToRole="eclass" />
+          <NavigationProperty Name="users" Relationship="Self.FKk6djikn2qjki5slvcf8apa2l5" FromRole="university" ToRole="users" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="activated" Type="Boolean" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="lang_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="reset_key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="department" Relationship="Self.FKrp6rnku7qccll4ya2wg2x9rvw" FromRole="users" ToRole="department" />
+          <NavigationProperty Name="enterprise" Relationship="Self.FKcfr4xftsx6tk9c8f542yti6a2" FromRole="users" ToRole="enterprise" />
+          <NavigationProperty Name="final_project_assignment" Relationship="Self.FKgw1enp8l447c2ubeua711s19a" FromRole="users" ToRole="final_project_assignment" />
+          <NavigationProperty Name="grade" Relationship="Self.FKlgg742djk2axv0obw83p4qy89" FromRole="users" ToRole="grade" />
+          <NavigationProperty Name="notification" Relationship="Self.FK9vcyt49k18m4eyt8c08j7hnl2" FromRole="users" ToRole="notification" />
+          <NavigationProperty Name="university" Relationship="Self.FKk6djikn2qjki5slvcf8apa2l5" FromRole="users" ToRole="university" />
+          <NavigationProperty Name="validation_group" Relationship="Self.FK20deodjvx0vjtwipu1ah1k5p" FromRole="users" ToRole="validation_group" />
+          <NavigationProperty Name="validation_group1" Relationship="Self.FK5a978kgynj1c8ctsmijfi5mgk" FromRole="users" ToRole="validation_group" />
+          <NavigationProperty Name="validation_group2" Relationship="Self.FK77b1vomsrpc0j0oku26hy9vsr" FromRole="users" ToRole="validation_group" />
+          <NavigationProperty Name="validation_group3" Relationship="Self.FKgt7e5w3duycr51oibx5oqwwrj" FromRole="users" ToRole="validation_group" />
+          <NavigationProperty Name="validation_group4" Relationship="Self.FKkt87io0mf60axiv0uu7a11wik" FromRole="users" ToRole="validation_group" />
+          <NavigationProperty Name="eclass" Relationship="Self.eclass_students" FromRole="users" ToRole="eclass" />
+          <NavigationProperty Name="role" Relationship="Self.user_role" FromRole="users" ToRole="role" />
+        </EntityType>
+        <EntityType Name="validation_group">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="valid_internship_director" Type="Boolean" Nullable="false" />
+          <Property Name="valid_pre_validator" Type="Boolean" Nullable="false" />
+          <Property Name="valid_president" Type="Boolean" Nullable="false" />
+          <Property Name="valid_reporter" Type="Boolean" Nullable="false" />
+          <Property Name="valid_supervisor" Type="Boolean" Nullable="false" />
+          <Property Name="internship_director_id" Type="Int64" />
+          <Property Name="pre_validator_id" Type="Int64" />
+          <Property Name="president_id" Type="Int64" />
+          <Property Name="reporter_id" Type="Int64" />
+          <Property Name="supervisor_id" Type="Int64" />
+          <NavigationProperty Name="final_project_assignment" Relationship="Self.FK4vqmdu5ow4ird0gkwwo57lcie" FromRole="validation_group" ToRole="final_project_assignment" />
+          <NavigationProperty Name="users" Relationship="Self.FK20deodjvx0vjtwipu1ah1k5p" FromRole="validation_group" ToRole="users" />
+          <NavigationProperty Name="users1" Relationship="Self.FK5a978kgynj1c8ctsmijfi5mgk" FromRole="validation_group" ToRole="users" />
+          <NavigationProperty Name="users2" Relationship="Self.FK77b1vomsrpc0j0oku26hy9vsr" FromRole="validation_group" ToRole="users" />
+          <NavigationProperty Name="users3" Relationship="Self.FKgt7e5w3duycr51oibx5oqwwrj" FromRole="validation_group" ToRole="users" />
+          <NavigationProperty Name="users4" Relationship="Self.FKkt87io0mf60axiv0uu7a11wik" FromRole="validation_group" ToRole="users" />
+        </EntityType>
+        <Association Name="FKh8qeui2uegxspmt7p02wxboe5">
+          <End Role="convention" Type="Self.convention" Multiplicity="1" />
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="convention">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="final_project_assignment">
+              <PropertyRef Name="convention_name" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKpstlcgfat2y6jgcksv5tmxknn">
+          <End Role="university" Type="Self.university" Multiplicity="0..1" />
+          <End Role="convention" Type="Self.convention" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="university">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="convention">
+              <PropertyRef Name="university_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKh2ap9lv99txektaou64wpx8b2">
+          <End Role="university" Type="Self.university" Multiplicity="0..1" />
+          <End Role="department" Type="Self.department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="university">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="department">
+              <PropertyRef Name="university_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKrp6rnku7qccll4ya2wg2x9rvw">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="department" Type="Self.department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="department">
+              <PropertyRef Name="chief_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKt6rk5mawjxopraei71e4cs2v5">
+          <End Role="department" Type="Self.department" Multiplicity="0..1" />
+          <End Role="options" Type="Self.options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="department">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="options">
+              <PropertyRef Name="department_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK2hhq5u1h4wfm4u3bj061kcpwd">
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="0..1" />
+          <End Role="document" Type="Self.document" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="final_project_assignment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="document">
+              <PropertyRef Name="final_project_assignment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKkgqhrf7yrhlp7tjtjtib8nfdb">
+          <End Role="university" Type="Self.university" Multiplicity="0..1" />
+          <End Role="eclass" Type="Self.eclass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="university">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eclass">
+              <PropertyRef Name="university_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKcfr4xftsx6tk9c8f542yti6a2">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="enterprise" Type="Self.enterprise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="enterprise">
+              <PropertyRef Name="representative_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK4vqmdu5ow4ird0gkwwo57lcie">
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="0..1" />
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="validation_group">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="final_project_assignment">
+              <PropertyRef Name="validation_group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKgw1enp8l447c2ubeua711s19a">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="final_project_assignment">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKlf5qmfq74idjjtme0muhe6fmq">
+          <End Role="sheet" Type="Self.sheet" Multiplicity="1" />
+          <End Role="final_project_assignment" Type="Self.final_project_assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sheet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="final_project_assignment">
+              <PropertyRef Name="sheet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKlgg742djk2axv0obw83p4qy89">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="grade" Type="Self.grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grade">
+              <PropertyRef Name="maker_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKprh543ojiisyrixk2ux1b0dyg">
+          <End Role="sheet" Type="Self.sheet" Multiplicity="1" />
+          <End Role="grade" Type="Self.grade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sheet">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="grade">
+              <PropertyRef Name="sheet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK9vcyt49k18m4eyt8c08j7hnl2">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="notification" Type="Self.notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="notification">
+              <PropertyRef Name="owner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKk6djikn2qjki5slvcf8apa2l5">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="university" Type="Self.university" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="university">
+              <PropertyRef Name="representative_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK20deodjvx0vjtwipu1ah1k5p">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="president_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK5a978kgynj1c8ctsmijfi5mgk">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="reporter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK77b1vomsrpc0j0oku26hy9vsr">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="internship_director_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKgt7e5w3duycr51oibx5oqwwrj">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="pre_validator_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKkt87io0mf60axiv0uu7a11wik">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="validation_group" Type="Self.validation_group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="validation_group">
+              <PropertyRef Name="supervisor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="eclass_students">
+          <End Role="eclass" Type="Self.eclass" Multiplicity="*" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+        </Association>
+        <Association Name="user_role">
+          <End Role="role" Type="Self.role" Multiplicity="*" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="internshipEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="convention" EntityType="Self.convention" />
+          <EntitySet Name="department" EntityType="Self.department" />
+          <EntitySet Name="document" EntityType="Self.document" />
+          <EntitySet Name="eclass" EntityType="Self.eclass" />
+          <EntitySet Name="enterprise" EntityType="Self.enterprise" />
+          <EntitySet Name="final_project_assignment" EntityType="Self.final_project_assignment" />
+          <EntitySet Name="grade" EntityType="Self.grade" />
+          <EntitySet Name="notification" EntityType="Self.notification" />
+          <EntitySet Name="options" EntityType="Self.options" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="sheet" EntityType="Self.sheet" />
+          <EntitySet Name="university" EntityType="Self.university" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="validation_group" EntityType="Self.validation_group" />
+          <AssociationSet Name="FKh8qeui2uegxspmt7p02wxboe5" Association="Self.FKh8qeui2uegxspmt7p02wxboe5">
+            <End Role="convention" EntitySet="convention" />
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FKpstlcgfat2y6jgcksv5tmxknn" Association="Self.FKpstlcgfat2y6jgcksv5tmxknn">
+            <End Role="university" EntitySet="university" />
+            <End Role="convention" EntitySet="convention" />
+          </AssociationSet>
+          <AssociationSet Name="FKh2ap9lv99txektaou64wpx8b2" Association="Self.FKh2ap9lv99txektaou64wpx8b2">
+            <End Role="university" EntitySet="university" />
+            <End Role="department" EntitySet="department" />
+          </AssociationSet>
+          <AssociationSet Name="FKrp6rnku7qccll4ya2wg2x9rvw" Association="Self.FKrp6rnku7qccll4ya2wg2x9rvw">
+            <End Role="users" EntitySet="users" />
+            <End Role="department" EntitySet="department" />
+          </AssociationSet>
+          <AssociationSet Name="FKt6rk5mawjxopraei71e4cs2v5" Association="Self.FKt6rk5mawjxopraei71e4cs2v5">
+            <End Role="department" EntitySet="department" />
+            <End Role="options" EntitySet="options" />
+          </AssociationSet>
+          <AssociationSet Name="FK2hhq5u1h4wfm4u3bj061kcpwd" Association="Self.FK2hhq5u1h4wfm4u3bj061kcpwd">
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+            <End Role="document" EntitySet="document" />
+          </AssociationSet>
+          <AssociationSet Name="FKkgqhrf7yrhlp7tjtjtib8nfdb" Association="Self.FKkgqhrf7yrhlp7tjtjtib8nfdb">
+            <End Role="university" EntitySet="university" />
+            <End Role="eclass" EntitySet="eclass" />
+          </AssociationSet>
+          <AssociationSet Name="FKcfr4xftsx6tk9c8f542yti6a2" Association="Self.FKcfr4xftsx6tk9c8f542yti6a2">
+            <End Role="users" EntitySet="users" />
+            <End Role="enterprise" EntitySet="enterprise" />
+          </AssociationSet>
+          <AssociationSet Name="FK4vqmdu5ow4ird0gkwwo57lcie" Association="Self.FK4vqmdu5ow4ird0gkwwo57lcie">
+            <End Role="validation_group" EntitySet="validation_group" />
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FKgw1enp8l447c2ubeua711s19a" Association="Self.FKgw1enp8l447c2ubeua711s19a">
+            <End Role="users" EntitySet="users" />
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FKlf5qmfq74idjjtme0muhe6fmq" Association="Self.FKlf5qmfq74idjjtme0muhe6fmq">
+            <End Role="sheet" EntitySet="sheet" />
+            <End Role="final_project_assignment" EntitySet="final_project_assignment" />
+          </AssociationSet>
+          <AssociationSet Name="FKlgg742djk2axv0obw83p4qy89" Association="Self.FKlgg742djk2axv0obw83p4qy89">
+            <End Role="users" EntitySet="users" />
+            <End Role="grade" EntitySet="grade" />
+          </AssociationSet>
+          <AssociationSet Name="FKprh543ojiisyrixk2ux1b0dyg" Association="Self.FKprh543ojiisyrixk2ux1b0dyg">
+            <End Role="sheet" EntitySet="sheet" />
+            <End Role="grade" EntitySet="grade" />
+          </AssociationSet>
+          <AssociationSet Name="FK9vcyt49k18m4eyt8c08j7hnl2" Association="Self.FK9vcyt49k18m4eyt8c08j7hnl2">
+            <End Role="users" EntitySet="users" />
+            <End Role="notification" EntitySet="notification" />
+          </AssociationSet>
+          <AssociationSet Name="FKk6djikn2qjki5slvcf8apa2l5" Association="Self.FKk6djikn2qjki5slvcf8apa2l5">
+            <End Role="users" EntitySet="users" />
+            <End Role="university" EntitySet="university" />
+          </AssociationSet>
+          <AssociationSet Name="FK20deodjvx0vjtwipu1ah1k5p" Association="Self.FK20deodjvx0vjtwipu1ah1k5p">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK5a978kgynj1c8ctsmijfi5mgk" Association="Self.FK5a978kgynj1c8ctsmijfi5mgk">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FK77b1vomsrpc0j0oku26hy9vsr" Association="Self.FK77b1vomsrpc0j0oku26hy9vsr">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FKgt7e5w3duycr51oibx5oqwwrj" Association="Self.FKgt7e5w3duycr51oibx5oqwwrj">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="FKkt87io0mf60axiv0uu7a11wik" Association="Self.FKkt87io0mf60axiv0uu7a11wik">
+            <End Role="users" EntitySet="users" />
+            <End Role="validation_group" EntitySet="validation_group" />
+          </AssociationSet>
+          <AssociationSet Name="eclass_students" Association="Self.eclass_students">
+            <End Role="eclass" EntitySet="eclass" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="user_role" Association="Self.user_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="internshipModelStoreContainer" CdmEntityContainer="internshipEntities2">
+          <EntitySetMapping Name="convention">
+            <EntityTypeMapping TypeName="internshipModel.convention">
+              <MappingFragment StoreEntitySet="convention">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="updated" ColumnName="updated" />
+                <ScalarProperty Name="valid" ColumnName="valid" />
+                <ScalarProperty Name="university_id" ColumnName="university_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="department">
+            <EntityTypeMapping TypeName="internshipModel.department">
+              <MappingFragment StoreEntitySet="department">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="chief_id" ColumnName="chief_id" />
+                <ScalarProperty Name="university_id" ColumnName="university_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="document">
+            <EntityTypeMapping TypeName="internshipModel.document">
+              <MappingFragment StoreEntitySet="document">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date_fichier_alf" ColumnName="date_fichier_alf" />
+                <ScalarProperty Name="fichier_alfresco" ColumnName="fichier_alfresco" />
+                <ScalarProperty Name="format_fichier_alf" ColumnName="format_fichier_alf" />
+                <ScalarProperty Name="id_fichier_alf" ColumnName="id_fichier_alf" />
+                <ScalarProperty Name="nom_fichier_alf" ColumnName="nom_fichier_alf" />
+                <ScalarProperty Name="path_fichier_alf" ColumnName="path_fichier_alf" />
+                <ScalarProperty Name="present" ColumnName="present" />
+                <ScalarProperty Name="size_fichier_alf" ColumnName="size_fichier_alf" />
+                <ScalarProperty Name="final_project_assignment_id" ColumnName="final_project_assignment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eclass">
+            <EntityTypeMapping TypeName="internshipModel.eclass">
+              <MappingFragment StoreEntitySet="eclass">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="university_id" ColumnName="university_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enterprise">
+            <EntityTypeMapping TypeName="internshipModel.enterprise">
+              <MappingFragment StoreEntitySet="enterprise">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="domain" ColumnName="domain" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="email_supervisor" ColumnName="email_supervisor" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="web_site" ColumnName="web_site" />
+                <ScalarProperty Name="representative_id" ColumnName="representative_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="final_project_assignment">
+            <EntityTypeMapping TypeName="internshipModel.final_project_assignment">
+              <MappingFragment StoreEntitySet="final_project_assignment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="convention_name" ColumnName="convention_name" />
+                <ScalarProperty Name="sheet_id" ColumnName="sheet_id" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="validation_group_id" ColumnName="validation_group_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="grade">
+            <EntityTypeMapping TypeName="internshipModel.grade">
+              <MappingFragment StoreEntitySet="grade">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="level" ColumnName="level" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="maker_id" ColumnName="maker_id" />
+                <ScalarProperty Name="sheet_id" ColumnName="sheet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="notification">
+            <EntityTypeMapping TypeName="internshipModel.notification">
+              <MappingFragment StoreEntitySet="notification">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="sys_notif_date" ColumnName="sys_notif_date" />
+                <ScalarProperty Name="owner_id" ColumnName="owner_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="options">
+            <EntityTypeMapping TypeName="internshipModel.options">
+              <MappingFragment StoreEntitySet="options">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="updated" ColumnName="updated" />
+                <ScalarProperty Name="department_id" ColumnName="department_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="internshipModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sheet">
+            <EntityTypeMapping TypeName="internshipModel.sheet">
+              <MappingFragment StoreEntitySet="sheet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="categorie" ColumnName="categorie" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="enterprise" ColumnName="enterprise" />
+                <ScalarProperty Name="problematique" ColumnName="problematique" />
+                <ScalarProperty Name="project_title" ColumnName="project_title" />
+                <ScalarProperty Name="student_name" ColumnName="student_name" />
+                <ScalarProperty Name="updated" ColumnName="updated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="university">
+            <EntityTypeMapping TypeName="internshipModel.university">
+              <MappingFragment StoreEntitySet="university">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="registration_number" ColumnName="registration_number" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="web_site" ColumnName="web_site" />
+                <ScalarProperty Name="representative_id" ColumnName="representative_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="internshipModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="activated" ColumnName="activated" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="lang_key" ColumnName="lang_key" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="reset_key" ColumnName="reset_key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="validation_group">
+            <EntityTypeMapping TypeName="internshipModel.validation_group">
+              <MappingFragment StoreEntitySet="validation_group">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="valid_internship_director" ColumnName="valid_internship_director" />
+                <ScalarProperty Name="valid_pre_validator" ColumnName="valid_pre_validator" />
+                <ScalarProperty Name="valid_president" ColumnName="valid_president" />
+                <ScalarProperty Name="valid_reporter" ColumnName="valid_reporter" />
+                <ScalarProperty Name="valid_supervisor" ColumnName="valid_supervisor" />
+                <ScalarProperty Name="internship_director_id" ColumnName="internship_director_id" />
+                <ScalarProperty Name="pre_validator_id" ColumnName="pre_validator_id" />
+                <ScalarProperty Name="president_id" ColumnName="president_id" />
+                <ScalarProperty Name="reporter_id" ColumnName="reporter_id" />
+                <ScalarProperty Name="supervisor_id" ColumnName="supervisor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="eclass_students" TypeName="internshipModel.eclass_students" StoreEntitySet="eclass_students">
+            <EndProperty Name="eclass">
+              <ScalarProperty Name="id" ColumnName="class_id" />
+            </EndProperty>
+            <EndProperty Name="users">
+              <ScalarProperty Name="id" ColumnName="students_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="user_role" TypeName="internshipModel.user_role" StoreEntitySet="user_role">
+            <EndProperty Name="role">
+              <ScalarProperty Name="id" ColumnName="roleid" />
+            </EndProperty>
+            <EndProperty Name="users">
+              <ScalarProperty Name="id" ColumnName="userid" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

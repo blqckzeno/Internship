@@ -1,0 +1,104 @@
+﻿@model Internship.Models.validation_group
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>validation_group</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_internship_director)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_internship_director)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_pre_validator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_pre_validator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_president)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_president)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_reporter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_reporter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valid_supervisor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valid_supervisor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users1.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users1.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users2.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users2.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users3.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users3.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.users4.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.users4.email)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
