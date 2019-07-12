@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -43,15 +44,31 @@ namespace Internship.Controllers
             return View();
         }
 
+
         // POST: universities/Create
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,email,address1,address2,city,state,street,zip_code,fax,name,registration_number,tel,web_site,representative_id")] university university)
+        public ActionResult Create([Bind(Include = "id,email,address1,address2,city,state,street,zip_code,fax,name,registration_number,tel,web_site,representative_id,Logo")] university university)
         {
+            foreach (string fileName in Request.Files)
+            {
+                HttpPostedFileBase file = Request.Files[fileName];
+                university.logoFile = Request.Files[fileName];
+                string a = file.FileName;
+
+            }
+
             if (ModelState.IsValid)
             {
+                string filename = Path.GetFileNameWithoutExtension(university.logoFile.FileName);
+                string extension = Path.GetExtension(university.logoFile.FileName);
+                filename = filename + DateTime.Now.ToString("yymmssffff")+extension;
+                university.Logo = "~/Image/" + filename;
+                filename = Path.Combine(Server.MapPath("~/Image/") + filename);
+                university.logoFile.SaveAs(filename);
+
                 db.university.Add(university);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,7 +99,7 @@ namespace Internship.Controllers
         // plus de détails, voir  https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,email,address1,address2,city,state,street,zip_code,fax,name,registration_number,tel,web_site,representative_id")] university university)
+        public ActionResult Edit([Bind(Include = "id,email,address1,address2,city,state,street,zip_code,fax,name,registration_number,tel,web_site,representative_id,Logo")] university university)
         {
             if (ModelState.IsValid)
             {

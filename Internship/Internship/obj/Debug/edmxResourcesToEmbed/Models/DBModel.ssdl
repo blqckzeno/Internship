@@ -157,6 +157,7 @@ avertissement 6002: La table/vue 'internship.dbo.eclass_students' n'a pas de cl�
     <Property Name="tel" Type="varchar" MaxLength="255" />
     <Property Name="web_site" Type="varchar" MaxLength="255" />
     <Property Name="representative_id" Type="bigint" Nullable="false" />
+    <Property Name="Logo" Type="nvarchar(max)" />
   </EntityType>
   <!--Erreurs détectées durant la génération :
 avertissement 6002: La table/vue 'internship.dbo.user_role' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->

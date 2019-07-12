@@ -6,18 +6,18 @@
     <edmx:Diagrams>
       <Diagram DiagramId="48aef7d76fe4411aa77a1c27a673aa20" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="internshipModel.convention" Width="1.5" PointX="7.5" PointY="25.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="internshipModel.department" Width="1.5" PointX="7.5" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="internshipModel.document" Width="1.5" PointX="12" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.department" Width="1.5" PointX="7.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.document" Width="1.5" PointX="13.125" PointY="21.75" IsExpanded="true" />
         <EntityTypeShape EntityType="internshipModel.eclass" Width="1.5" PointX="7.5" PointY="29.375" IsExpanded="true" />
         <EntityTypeShape EntityType="internshipModel.enterprise" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="internshipModel.final_project_assignment" Width="1.5" PointX="9.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.final_project_assignment" Width="1.5" PointX="9.625" PointY="22.125" IsExpanded="true" />
         <EntityTypeShape EntityType="internshipModel.grade" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="internshipModel.notification" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="internshipModel.options" Width="1.5" PointX="9.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.notification" Width="1.5" PointX="0.5" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.options" Width="1.5" PointX="9.625" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="internshipModel.role" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
         <EntityTypeShape EntityType="internshipModel.sheet" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="internshipModel.university" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="internshipModel.users" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.university" Width="1.5" PointX="0.625" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="internshipModel.users" Width="1.5" PointX="2.375" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="internshipModel.validation_group" Width="1.5" PointX="5.25" PointY="32.375" IsExpanded="true" />
         <AssociationConnector Association="internshipModel.FKh8qeui2uegxspmt7p02wxboe5" ManuallyRouted="false" />
         <AssociationConnector Association="internshipModel.FKpstlcgfat2y6jgcksv5tmxknn" ManuallyRouted="false" />

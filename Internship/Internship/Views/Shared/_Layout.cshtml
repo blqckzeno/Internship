@@ -38,6 +38,57 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $.connection.hub.start()
+                .done(function () { console.log('Now connected, connection ID=' + $.connection.hub.id); })
+                .fail(function () { console.log('Could not Connect!'); });
+
+            var listCus = $.connection.InterHub;
+
+            listCus.client.displayInternship = function () {
+                getData();
+            };
+
+            $.connection.hub.start().done(function () {
+
+                //Call the server side method for every 5 seconds
+                setInterval(function () {
+                    listCus.server.MyNewMethodName("aymen", "notifinatio");
+                }, 5000);
+            });
+
+            getData();
+        });
+
+
+        function getData() {
+            var $tbl = $('#tblInfo');
+            $.ajax({
+                url: $("#Get").val(),
+                type: 'GET',
+                datatype: 'json',
+                success: function (data) {
+                    $tbl.empty();
+                    $.each(data.listCus, function (i, model) {
+                        $tbl.append
+                            (
+                            '<tr>' +
+                            '<td>' + model.Id + '</td>' +
+                            '<td>' + model.CusId + '</td>' +
+                            '<td>' + model.CusName + '</td>' +
+                            '<tr>'
+                        );
+                        console.log("Refrech");
+                    });
+                }
+            });
+        }
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -89,3 +89,17 @@ C:\Users\Roock\source\repos\Internship\Internship\obj\Debug\Internship.csproj.Co
 C:\Users\Roock\source\repos\Internship\Internship\obj\Debug\Internship.csproj.CopyComplete
 C:\Users\Roock\source\repos\Internship\Internship\obj\Debug\Internship.dll
 C:\Users\Roock\source\repos\Internship\Internship\obj\Debug\Internship.pdb
+C:\Users\Roock\source\repos\Internship\Internship\obj\Debug\Internship.csprojAssemblyReference.cache
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.Owin.dll
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.Owin.Security.dll
+C:\Users\Roock\source\repos\Internship\Internship\bin\Owin.dll
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.AspNet.SignalR.Core.pdb
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.AspNet.SignalR.SystemWeb.pdb
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.Owin.xml
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Roock\source\repos\Internship\Internship\bin\Microsoft.Owin.Security.xml

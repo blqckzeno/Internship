@@ -48,6 +48,9 @@
             @Html.DisplayNameFor(model => model.web_site)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Logo)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.users.email)
         </th>
         <th></th>
@@ -90,6 +93,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.web_site)
+        </td>
+        <td>
+            <img src="@Url.Content(item.Logo)" width="250" height="250" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.users.email)

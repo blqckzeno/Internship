@@ -144,6 +144,7 @@
     <EntitySetMapping Name="university">
       <EntityTypeMapping TypeName="internshipModel.university">
         <MappingFragment StoreEntitySet="university">
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="address1" ColumnName="address1" />

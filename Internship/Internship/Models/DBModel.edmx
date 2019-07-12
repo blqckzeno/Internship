@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="internshipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="internshipModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="convention">
           <Key>
             <PropertyRef Name="id" />
@@ -162,6 +162,7 @@ avertissement 6002: La table/vue 'internship.dbo.eclass_students' n'a pas de cl�
           <Property Name="tel" Type="varchar" MaxLength="255" />
           <Property Name="web_site" Type="varchar" MaxLength="255" />
           <Property Name="representative_id" Type="bigint" Nullable="false" />
+          <Property Name="Logo" Type="nvarchar(max)" />
         </EntityType>
         <!--Erreurs détectées durant la génération :
 avertissement 6002: La table/vue 'internship.dbo.user_role' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
@@ -615,8 +616,7 @@ avertissement 6002: La table/vue 'internship.dbo.user_role' n'a pas de clé prim
             <End Role="options" EntitySet="options" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="internshipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -792,6 +792,7 @@ avertissement 6002: La table/vue 'internship.dbo.user_role' n'a pas de clé prim
           <NavigationProperty Name="department" Relationship="Self.FKh2ap9lv99txektaou64wpx8b2" FromRole="university" ToRole="department" />
           <NavigationProperty Name="eclass" Relationship="Self.FKkgqhrf7yrhlp7tjtjtib8nfdb" FromRole="university" ToRole="eclass" />
           <NavigationProperty Name="users" Relationship="Self.FKk6djikn2qjki5slvcf8apa2l5" FromRole="university" ToRole="users" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="users">
           <Key>
@@ -1343,6 +1344,7 @@ avertissement 6002: La table/vue 'internship.dbo.user_role' n'a pas de clé prim
           <EntitySetMapping Name="university">
             <EntityTypeMapping TypeName="internshipModel.university">
               <MappingFragment StoreEntitySet="university">
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="address1" ColumnName="address1" />

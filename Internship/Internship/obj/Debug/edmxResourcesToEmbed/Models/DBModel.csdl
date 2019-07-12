@@ -172,6 +172,7 @@
     <NavigationProperty Name="department" Relationship="Self.FKh2ap9lv99txektaou64wpx8b2" FromRole="university" ToRole="department" />
     <NavigationProperty Name="eclass" Relationship="Self.FKkgqhrf7yrhlp7tjtjtib8nfdb" FromRole="university" ToRole="eclass" />
     <NavigationProperty Name="users" Relationship="Self.FKk6djikn2qjki5slvcf8apa2l5" FromRole="university" ToRole="users" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="users">
     <Key>

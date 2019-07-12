@@ -11,7 +11,8 @@ namespace Internship.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class university
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -36,7 +37,9 @@ namespace Internship.Models
         public string tel { get; set; }
         public string web_site { get; set; }
         public long representative_id { get; set; }
-    
+        public string Logo { get; set; }
+        public HttpPostedFileBase logoFile { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<convention> convention { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
